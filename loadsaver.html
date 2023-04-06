@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <base target="_top">
+  <base target="_top">
+  <base target="_top">
+  <style>
+    * {
+      padding: 5px;
+    }
+
+    body {
+      background-image: linear-gradient(white, rgba(0, 168, 112, 0.1));
+    }
+
+    .img-responsive {
+      width: 20%;
+      height: 15%;
+    }
+
+    .jumbotron p {
+      font-size: 300%;
+    }
+
+    .jumbotron h1 {
+      font-size: 450%;
+    }
+
+    .listcontainer {
+      text-align: center;
+    }
+
+    .list-group {
+      font-size: 300%;
+    }
+
+    .list-group-item {
+      margin: auto;
+    }
+
+    .form-row {
+      font-size: 450%;
+      width: 80%;
+      margin: auto;
+    }
+
+    .form-control {
+      font-size: 100%;
+      width: 80%;
+      height: 80%;
+      margin: auto;
+    }
+
+    .result {
+      font-size: 600%;
+    }
+
+    #buttonboy {
+      margin: auto;
+      width: 75%;
+      font-size: 300%;
+    }
+
+    #pic {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+  </style>
+</head>
+
+<!-- <marquee attribute_name = "attribute_value" height="1000%">
+   BETA VERSION!
+</marquee> -->
+
+<img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Lafarge_%28Unternehmen%29_logo.svg" alt="">
+
+<body>
+  <div class="jumbotron">
+    <h1 class="display-4">Save Your Concrete!</h1>
+    <p class="lead">This program will guide you on the steps to save your concrete.</p>
+    <hr class="my-4">
+    <p>It is always reccommended to use your load saver guide or try calling your coach first!</p>
+  </div>
+
+  <img src="https://gcdnb.pbrd.co/images/mzbWgXkUIM1U.png?o=1" id="pic" alt="Italian Trulli">
+
+  <div class="listcontainer">
+    <h1>Friendly Reminders</h1>
+    <ul class="list-group">
+      <li class="list-group-item">1.Do not give up</li>
+      <li class="list-group-item">2.Call for help</li>
+      <li class="list-group-item">3.You can ask for a retest</li>
+      <li class="list-group-item">4.Do not leave site until instructed to</li>
+    </ul>
+  </div>
+  <script>
+    function rangeSelected(range){
+    let targSlump =  document.getElementById('targSlump');
+    let slump = range.slice(0,range.indexOf("+"));
+    range == "Agilia" ? targSlump.value = 650  : targSlump.value = slump;   
+  }
+
+    function airRangeSelected(range){
+    let targAir =  document.getElementById('targAir');
+    let airRange = {
+      "5-8%": 6.5,
+      "4-7%": 5.5,
+      "6-9%": 7.5,
+      "Non-Air": 0,
+    }
+    let air = airRange[range];
+    targAir.value = air;  
+  }
+  
+  </script>
+
+  <div class="form-row">
+    <h2>Load Size (M3)</h2>
+    <select class="form-control" id="loadSize">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+
+    </select>
+  </div>
+
+  <br>
+
+
+  <div class="form-row">
+    <h2>Slump Range</h2>
+    <select class="form-control" id="range" onchange="rangeSelected(this.value)">
+                <option value="80+-30">80+-30</option>
+                <option value="120+-30">120+-30</option>
+                <option value="150+-30">150+-30</option>
+                <option value="180+-30">180+-30</option>
+                <option value="Agilia">Agilia</option>
+        </select>
+  </div>
+
+  <br>
+
+  <div class="form-row">
+    <h2>Air Range</h2>
+    <select class="form-control" id="range" onchange="airRangeSelected(this.value)">
+                <option value="5-8%">5-8%</option>
+                <option value="4-7%">4-7%</option>
+                <option value="6-9%">6-9%</option>
+                <option value="Non-Air">Non-Air</option>
+        </select>
+  </div>
+
+  <br>
+
+  <div class="form-row">
+    <h2>Are you Past One Hour From Batching?</h2>
+    <select class="form-control" id="hour">
+                <option>Yes</option>
+                <option>No</option>
+        </select>
+  </div>
+  <br>
+
+  <div class="form-row">
+    <h2>Target Slump & Air</h2>
+    <div class="col">
+      <input type="number" id="targSlump" class="form-control" placeholder="Target Slump (mm)" value="80" readonly>
+    </div>
+    <div class="col">
+      <input type="number" id="targAir" class="form-control" placeholder="Target Air (%)" value="6.5" readonly>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="form-row">
+    <h2>Tested Slump & Air</h2>
+    <div class="col">
+      <input type="number" id="testSlump" class="form-control" placeholder="Tested Slump (mm)">
+    </div>
+    <div class="col">
+      <input type="number" id="testAir" class="form-control" placeholder="Tested Air (%)">
+    </div>
+  </div>
+
+  <br>
+
+  <button type="button" class="btn btn-primary btn-lg btn-block" id="buttonboy" onclick="loadsave()">Save My Concrete!</button>
+
+<div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+
+  <script>
+    function loadsave(){
+        let targSlump =  document.getElementById('targSlump').value
+        let targAir =  document.getElementById('targAir').value
+        let testSlump =  document.getElementById('testSlump').value
+        let testAir =  document.getElementById('testAir').value
+        let loadSize =  document.getElementById('loadSize').value
+        let range =  document.getElementById('range').value
+        let hour =  document.getElementById('hour').value
+        let result = document.getElementById('result');
+        let airActions = document.getElementById('airActions');
+        let slumpAction = "";
+        let airAction = "";
+
+        result.style.color = "black";
+        airActions.style.color = "black";
+
+        let superpAdjust = {
+        "80+-30": 35,
+        "120+-30": 35,
+        "150+-30": 35,
+        "180+-30": 25,
+        "Agilia" : 35,
+        }
+        
+        let airAdjust = {
+        "80+-30": 30,
+        "120+-30": 25,
+        "150+-30": 25,
+        "180+-30": 20,
+        "Agilia" : 10,
+        }
+        
+        if(targSlump-testSlump >30 && hour == "No"){
+        let offBy = targSlump-testSlump;
+        let waterToAdd = (offBy/25 * loadSize * 5);
+        slumpAction += `Your slump is under by ${offBy}mm. To bring your slump up to spec for a ${loadSize}m3 load you need to add ${Math.round(waterToAdd)}L of water. Since you are less than an hour from batch time you can adjust with water`;
+        result.innerHTML = slumpAction;
+        }
+        else if(targSlump-testSlump>30 && hour == "Yes"){
+        let offBy = targSlump-testSlump;
+        let superPToAdd = (offBy/superpAdjust[range] * loadSize * 100);
+        slumpAction += `Your slump is under by ${offBy}mm. To bring your slump up to spec for a ${loadSize}m3 load you need to add ${Math.round(superPToAdd)}mL of Super P. Since you are an hour past batching you need to adjust with Super P.`
+        result.innerHTML = slumpAction;
+        }
+                else if(targSlump-testSlump<-60){ 
+          slumpAction +=`Your Slump is over by ${Math.abs(targSlump-testSlump)}mm. There is no way to save this load, notify dispatch and return to plant`; 
+          result.innerHTML=slumpAction;
+          result.style.color = "red";
+        }
+        else if(targSlump-testSlump<-30){ 
+          slumpAction +=`Your Slump is over by ${(Math.abs(targSlump-testSlump))-30}mm. You need to stop your drum and wait. Then retest`; 
+          result.innerHTML=slumpAction;
+        }else{
+          slumpAction = `Your slump is in range!`;
+          result.innerHTML=slumpAction;
+          result.style.color = "green";
+        }
+
+        if(targAir-testAir > 1.5){
+          let offByAir = targAir-testAir;
+          let aidAdjustVoume = offByAir*airAdjust[range]*loadSize; 
+          airAction = `Your air is under by ${offByAir}%. To to bring your air up to spec for a ${loadSize}m3 load you need to add ${Math.round(aidAdjustVoume)}mL of air. Allow it to mix then retest. Dont forget to add a little water after air addition for it to take effect`;
+          airActions.innerHTML=airAction;
+        }else if(targAir-testAir < -1.5){
+          airAction = `Your air is over by ${Math.abs(targAir-testAir)}%. Stop your drum for 15 minutes then retest`;
+          airActions.innerHTML=airAction;
+        }else{
+          airAction = `Your air is in range!`;
+          airActions.innerHTML=airAction;
+          airActions.style.color = "green";
+        }
+      }
+  </script>
+
+  <br>
+  <h3 class="result" id="result"></h3>
+  <h3 class="result" id="airActions"></h3>
+
+</body>
+
+</html>
